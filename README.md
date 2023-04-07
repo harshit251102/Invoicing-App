@@ -1,11 +1,6 @@
-##Invoicing App
-A simple and user-friendly invoicing app built using React and Material-UI. This app allows you to create invoices with automatic calculations for discounts, taxes, and total prices. Invoices can be easily added to a grid, which provides an overview of all created invoices and allows for quick editing.
+Invoicing App
 
-Table of Contents
-Features
-Installation
-Usage
-Technologies Used
+A simple and user-friendly invoicing app built using React and Material-UI. This app allows you to create invoices with automatic calculations for discounts, taxes, and total prices. Invoices can be easily added to a grid, which provides an overview of all created invoices and allows for quick editing.
 
 Features
 1. Intuitive invoice form with automatic calculations for discounts, taxes, and total prices
@@ -28,8 +23,7 @@ Usage
 Fill out the invoice form with the necessary information: quantity, price, discount %, discount, tax %, and tax. The total price will be automatically calculated.
 Click the "Add Invoice" button to add the invoice to the grid.
 To edit an invoice in the grid, click the "Edit" button next to the invoice, make the necessary changes, and click the "Save" button to save the changes.
+
 Technologies Used
 React
-Material-UI#� �I�n�v�o�i�c�i�n�g�-�A�p�p�
-�
-�
+Material-UI
