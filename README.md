@@ -9,8 +9,8 @@ Features
 4. Responsive design using Material-UI components
 
 Installation
-1. Clone the repository:
-git clone https://github.com/yourusername/invoicing-app.git
+1. Clone the repository:  
+https://github.com/harshit251102/Invoicing-App.git
 2. Change the directory:
 cd invoicing-app
 3. Install the dependencies:
