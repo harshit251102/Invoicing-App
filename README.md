@@ -19,11 +19,11 @@ npm install
 npm start
 5. Open http://localhost:3000 to view the app in your browser.
 
-Usage
+Usage: 
 Fill out the invoice form with the necessary information: quantity, price, discount %, discount, tax %, and tax. The total price will be automatically calculated.
 Click the "Add Invoice" button to add the invoice to the grid.
 To edit an invoice in the grid, click the "Edit" button next to the invoice, make the necessary changes, and click the "Save" button to save the changes.
 
-Technologies Used
+Technologies Used: 
 React
 Material-UI
