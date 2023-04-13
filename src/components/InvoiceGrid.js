@@ -68,15 +68,13 @@ function InvoiceGrid({ invoices, setInvoices }) {
         newGridData[index] = { ...newGridData[index], discount, tax, totalPrice: newGridData[index].price * newGridData[index].qty - discount + tax };
       } else if (field === "discount") {
         const discountPercentage = parseFloat((((value / (newGridData[index].qty * newGridData[index].price)) * 100).toFixed(2)));
-        const discount = parseFloat((((discountPercentage / 100) * newGridData[index].qty * newGridData[index].price).toFixed(2)));
-        newGridData[index] = { ...newGridData[index], discount, discountPercentage, totalPrice: newGridData[index].price * newGridData[index].qty - discount + newGridData[index].tax };
+        newGridData[index] = { ...newGridData[index], discount: value, discountPercentage, totalPrice: newGridData[index].price * newGridData[index].qty - value + newGridData[index].tax };
       } else if (field === "discountPercentage") {
         const discount = parseFloat((((value / 100) * newGridData[index].qty * newGridData[index].price).toFixed(2)));
         newGridData[index] = { ...newGridData[index], discount, discountPercentage: value, totalPrice: newGridData[index].price * newGridData[index].qty - discount + newGridData[index].tax };
       } else if (field === "tax") {
         const taxPercentage = parseFloat((((value / (newGridData[index].qty * newGridData[index].price - newGridData[index].discount)) * 100).toFixed(2)));
-        const tax = parseFloat((((taxPercentage / 100) * (newGridData[index].qty * newGridData[index].price - newGridData[index].discount)).toFixed(2)));
-        newGridData[index] = { ...newGridData[index], tax, taxPercentage, totalPrice: newGridData[index].price * newGridData[index].qty - newGridData[index].discount + tax };
+        newGridData[index] = { ...newGridData[index], tax: value, taxPercentage, totalPrice: newGridData[index].price * newGridData[index].qty - newGridData[index].discount + value };
       } else if (field === "taxPercentage") {
         const tax = parseFloat((((value / 100) * (newGridData[index].qty * newGridData[index].price - newGridData[index].discount)).toFixed(2)));
         newGridData[index] = { ...newGridData[index], tax, taxPercentage: value, totalPrice: newGridData[index].price * newGridData[index].qty - newGridData[index].discount + tax };
@@ -84,6 +82,7 @@ function InvoiceGrid({ invoices, setInvoices }) {
     
       setState((prevState) => ({ ...prevState, gridData: newGridData }));
     };
+    
     
   
   
