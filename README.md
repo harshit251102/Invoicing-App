@@ -1,4 +1,4 @@
-Invoicing App
+Invoicing App (Live link - https://invoicing-app-jade.vercel.app/)
 
 A simple and user-friendly invoicing app built using React and Material-UI. This app allows you to create invoices with automatic calculations for discounts, taxes, and total prices. Invoices can be easily added to a grid, which provides an overview of all created invoices and allows for quick editing.
 
