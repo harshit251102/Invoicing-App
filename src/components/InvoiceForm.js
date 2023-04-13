@@ -21,27 +21,30 @@ function InvoiceForm({ handleAddInvoice }) {
   
       const handleChange = (field, value) => {
         setFormData((prevFormData) => {
-            if (field === "discountPercentage" || field === "taxPercentage") {
-              value = Math.min(100, value);
-            }
-            let newFormData = { ...prevFormData, [field]: value };
-            if (field === "qty" || field === "price") {
-                const discount = (newFormData.discountPercentage / 100) * newFormData.qty * newFormData.price;
-                const tax = (newFormData.taxPercentage / 100) * (newFormData.qty * newFormData.price - discount);
-                newFormData = { ...newFormData, discount, tax, totalPrice: calculateTotalPrice({ ...newFormData, discount, tax }) };
-            } else if (field === "discount" || field === "discountPercentage") {
-                const discountPercentage = field === "discount" ? (value / (newFormData.qty * newFormData.price)) * 100 : value;
-                const discount = (discountPercentage / 100) * newFormData.qty * newFormData.price;
-                newFormData = { ...newFormData, discount, discountPercentage, totalPrice: calculateTotalPrice({ ...newFormData, discount }) };
-            } else if (field === "tax" || field === "taxPercentage") {
-                const taxPercentage = field === "tax" ? (value / (newFormData.qty * newFormData.price - newFormData.discount)) * 100 : value;
-                const tax = (taxPercentage / 100) * (newFormData.qty * newFormData.price - newFormData.discount);
-                newFormData = { ...newFormData, tax, taxPercentage, totalPrice: calculateTotalPrice({ ...newFormData, tax }) };
-            }
-            return newFormData;
+          if (field === "discountPercentage" || field === "taxPercentage") {
+            value = Math.min(100, value);
+          }
+          let newFormData = { ...prevFormData, [field]: value };
+          if (field === "qty" || field === "price") {
+            const discount = parseFloat((((newFormData.discountPercentage / 100) * newFormData.qty * newFormData.price).toFixed(2)));
+            const tax = parseFloat((((newFormData.taxPercentage / 100) * (newFormData.qty * newFormData.price - discount)).toFixed(2)));
+            newFormData = { ...newFormData, discount, tax, totalPrice: calculateTotalPrice({ ...newFormData, discount, tax }) };
+          } else if (field === "discount") {
+            const discountPercentage = parseFloat(((value / (newFormData.qty * newFormData.price)) * 100).toFixed(2));
+            newFormData = { ...newFormData, discount: value, discountPercentage, totalPrice: calculateTotalPrice({ ...newFormData, discount: value }) };
+          } else if (field === "discountPercentage") {
+            const discount = parseFloat((((value / 100) * newFormData.qty * newFormData.price).toFixed(2)));
+            newFormData = { ...newFormData, discount, discountPercentage: value, totalPrice: calculateTotalPrice({ ...newFormData, discount }) };
+          } else if (field === "tax") {
+            const taxPercentage = parseFloat(((value / (newFormData.qty * newFormData.price - newFormData.discount)) * 100).toFixed(2));
+            newFormData = { ...newFormData, tax: value, taxPercentage, totalPrice: calculateTotalPrice({ ...newFormData, tax: value }) };
+          } else if (field === "taxPercentage") {
+            const tax = parseFloat((((value / 100) * (newFormData.qty * newFormData.price - newFormData.discount)).toFixed(2)));
+            newFormData = { ...newFormData, tax, taxPercentage: value, totalPrice: calculateTotalPrice({ ...newFormData, tax }) };
+          }
+          return newFormData;
         });
-    };
-    
+      };   
     
     const handleSubmit = (e) => {
         e.preventDefault();
